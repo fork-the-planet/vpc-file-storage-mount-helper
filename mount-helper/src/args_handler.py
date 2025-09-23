@@ -8,7 +8,7 @@ import argparse
 from enum import Enum
 from common import *
 
-ESSENTIAL_OPTIONS = "sec=sys,nfsvers=4.1"
+ESSENTIAL_OPTIONS = "sec=sys"
 MOUNT = "mount"
 NFS_VERSION = "nfs4"
 MOUNT_T_OPTION = "-t"
