@@ -82,12 +82,12 @@ jobs:
           /home/runner/work/vpc-file-storage-mount-helper/vpc-file-storage-mount-helper/${{ matrix.package_dir }}/mount.ibmshare-latest.tar.gz.sha256
           /home/runner/work/vpc-file-storage-mount-helper/vpc-file-storage-mount-helper/mount-helper-container/mount-helper-container-latest.tar.gz
           /home/runner/work/vpc-file-storage-mount-helper/vpc-file-storage-mount-helper/mount-helper-container/mount-helper-container-latest.tar.gz.sha256
-        tag_name: 0.2.3
-        name: 0.2.3
+        tag_name: 0.2.4
+        name: 0.2.4
         body: |
           - Added offline packages support for RHEL 9.5
           - Supporting PPC for RHEL 9.4
-
+          - Added the root and int certs for CHE 
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
 
