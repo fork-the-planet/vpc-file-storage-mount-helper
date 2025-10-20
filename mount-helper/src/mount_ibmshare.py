@@ -31,7 +31,7 @@ class MountIbmshare(MountHelperBase):
         self.lockhandler = file_lock.LockHandler.mount_share_lock()
 
     def set_installed_stunnel(self):
-        stunnel_dirs = ["/etc/stunnel", "/var/run/stunnel4/", "/var/log/stunnel/"]
+        stunnel_dirs = ["/etc/stunnel", "/var/log/stunnel/"]
         errored = False
         for directory in stunnel_dirs:
             if not os.path.isdir(directory):
@@ -77,7 +77,7 @@ class MountIbmshare(MountHelperBase):
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 universal_newlines=True,
-                check=True
+                check=True,
             ).stdout.strip()
             return answer.startswith("ppc")
         except subprocess.CalledProcessError as e:
