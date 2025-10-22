@@ -20,7 +20,7 @@ CMD = [
     "-t",
     "nfs4",
     "-o",
-    "sec=sys,nfsvers=4.1,rw,args1,arg2=test2,arg3=test3",
+    "sec=sys,rw,args1,arg2=test2,arg3=test3",
     "192.168.1.1:/path1",
     "/my_mount1",
 ]
