@@ -62,6 +62,7 @@ declare -A region_map=(
     ["eu-fr2"]="eu-fr2"
     ["ca-mon"]="ca-mon"
     ["in-che"]="in-che"
+    ["in-mum"]="in-mum"
     )
 
 
