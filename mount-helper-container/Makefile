@@ -38,10 +38,10 @@ deb-build:
 deb-build: build-linux
 	rm -rf $(BUILD_DIR)
 	mkdir -p $(BUILD_DIR)/DEBIAN
-	mkdir -p ${BUILD_DIR}/etc/systemd/system/ ${BUILD_DIR}/usr/local/bin/ $(BUILD_DIR)/etc/ibmcloud
+	mkdir -p ${BUILD_DIR}/etc/systemd/system/ ${BUILD_DIR}/usr/local/bin/ $(BUILD_DIR)/etc/ibmshare
 
 	cp install/mount-helper-container.service $(BUILD_DIR)/etc/systemd/system/
-	cp install/share.conf $(BUILD_DIR)/etc/ibmcloud/
+	cp install/share.conf $(BUILD_DIR)/etc/ibmshare/
 	cp ${BIN_DIR}/mount-helper-container-server $(BUILD_DIR)/usr/local/bin/
 	cp install/postinst.sh $(BUILD_DIR)/DEBIAN/postinst
 	cp install/prerm.sh $(BUILD_DIR)/DEBIAN/prerm
@@ -60,9 +60,9 @@ rpm-build:
 rpm-build: build-linux
 	rm -rf $(BUILD_DIR)
 	mkdir -p $(BUILD_DIR)/
-	mkdir -p $(BUILD_DIR)/rpm/SOURCES/usr/local/bin $(BUILD_DIR)/rpm/SOURCES/etc/systemd/system $(BUILD_DIR)/rpm/SOURCES/etc/ibmcloud
+	mkdir -p $(BUILD_DIR)/rpm/SOURCES/usr/local/bin $(BUILD_DIR)/rpm/SOURCES/etc/systemd/system $(BUILD_DIR)/rpm/SOURCES/etc/ibmshare
 	cp install/mount-helper-container.service $(BUILD_DIR)/rpm/SOURCES/etc/systemd/system
-	cp install/share.conf $(BUILD_DIR)/rpm/SOURCES/etc/ibmcloud
+	cp install/share.conf $(BUILD_DIR)/rpm/SOURCES/etc/ibmshare
 	cp ${BIN_DIR}/mount-helper-container-server $(BUILD_DIR)/rpm/SOURCES/usr/local/bin
 
 	echo "Name: $(NAME)" > $(REDHAT_SPEC)
@@ -79,7 +79,7 @@ rpm-build: build-linux
 	echo "rm -rf %{buildroot}" >> $(REDHAT_SPEC)
 	echo "mkdir -p %{buildroot}/etc/systemd/system/" >> $(REDHAT_SPEC)
 	echo "mkdir -p %{buildroot}/usr/local/bin/" >> $(REDHAT_SPEC)
-	echo "mkdir -p %{buildroot}/etc/ibmcloud/" >> $(REDHAT_SPEC)
+	echo "mkdir -p %{buildroot}/etc/ibmshare/" >> $(REDHAT_SPEC)
 	echo "cp -r %{_sourcedir}/* %{buildroot}/" >> $(REDHAT_SPEC)
 
 	echo "%description" >> $(REDHAT_SPEC)
@@ -88,7 +88,7 @@ rpm-build: build-linux
 	echo "%files" >> $(REDHAT_SPEC)
 	echo "/etc/systemd/system/mount-helper-container.service" >> $(REDHAT_SPEC)
 	echo "/usr/local/bin/mount-helper-container-server" >> $(REDHAT_SPEC)
-	echo "/etc/ibmcloud/share.conf" >> $(REDHAT_SPEC)
+	echo "/etc/ibmshare/share.conf" >> $(REDHAT_SPEC)
 
 	echo "%post" >> $(REDHAT_SPEC)
 	echo "systemctl enable mount-helper-container.service" >> $(REDHAT_SPEC)

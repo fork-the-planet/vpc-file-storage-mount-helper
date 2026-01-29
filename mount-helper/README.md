@@ -82,7 +82,7 @@ There is no need for this export for production users.
 4. Few tips to verify installation
     - Check for file /sbin/mount.ibmshare, if the file is not found then installation must have failed. Check the logs and fix/report.
     - Check strongswan status: systemctl status strongswan. This should be in active(running) state.
-    - Check for config file: /etc/ibmcloud/share.conf
+    - Check for config file: /etc/ibmshare/share.conf
 
 ## How to mount a zonal EIT share using ipsec
 Use the following command syntax to mount the share. Replace the mountpath with the information that is specific to your file share.

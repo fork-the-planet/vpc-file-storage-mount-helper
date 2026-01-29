@@ -767,7 +767,7 @@ class RootCert(object):
 
 
 class ShareConfig(ConfigEditor):
-    conf_path = "/etc/ibmcloud"
+    conf_path = "/etc/ibmshare"
 
     def __init__(self, path, cert_path=".", show_error=True):
         self.name = make_filename(path if path else self.conf_path, "share.conf")

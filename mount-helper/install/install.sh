@@ -8,7 +8,7 @@
 INSTALL_ARG="$1"
 INSTALL_MOUNT_OPTION_ARG="$2"
 STUNNEL_ENABLED=false
-CONF_FILE=/etc/ibmcloud/share.conf
+CONF_FILE=/etc/ibmshare/share.conf
 
 APP_NAME="IBM Mount Share Helper"
 SCRIPT_NAME="mount.ibmshare"
@@ -550,7 +550,7 @@ touch_conf_file() {
 }
 
 setup_share_config() {
-    DIR_NAME="/etc/ibmcloud"
+    DIR_NAME="/etc/ibmshare"
 
     sudo mkdir -p $DIR_NAME
     sudo chmod 744 $DIR_NAME
