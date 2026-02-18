@@ -3,7 +3,7 @@
 # Constants
 INSTALL="install"
 UNINSTALL="uninstall"
-CONF_FILE=/etc/ibmcloud/share.conf
+CONF_FILE=/etc/ibmshare/share.conf
 
 # Temporary: Add a test certificate to /etc/stunnel if stunnel is installed
 # This is a non-production test certificate used only during development.
