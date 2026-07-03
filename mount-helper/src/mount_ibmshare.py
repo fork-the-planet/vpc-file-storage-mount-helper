@@ -53,7 +53,7 @@ class MountIbmshare(MountHelperBase):
         if ss_obj.set_version():
             LocalInstall.set_ipsec_mgr(ss_obj)
             return True
-        self.LogError("IPsec installation failed, check the charon logs.")
+        self.LogError("IPsec installation failed or missing. Check charon logs if using ipsec.")
         return False
 
     def get_ipsec_mgr(self):
@@ -372,7 +372,9 @@ class MountIbmshare(MountHelperBase):
             exit_code = SysApp.ERR_MOUNT + out.returncode if out else SysApp.ERR_MOUNT
             return self.LogError("Share mount failed.", code=exit_code)
 
-        self.ca_certs_alert()
+        stunnel_requested = ArgsHandler.is_request_stunnel()
+        if not stunnel_requested and args.is_secure:
+            self.ca_certs_alert()
         self.LogUser("Share successfully mounted:" + out.stdout)
         return True
 
