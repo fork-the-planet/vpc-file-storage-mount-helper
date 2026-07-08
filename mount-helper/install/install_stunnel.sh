@@ -158,8 +158,11 @@ install_stunnel_ubuntu_debian() {
         sudo apt-get install -y stunnel4
     else
         PKG_DIR="${PACKAGES_BASE}/${ID}/${VERSION_ID}"
-        if ls "$PKG_DIR"/stunnel*.deb >/dev/null 2>&1; then
-            sudo apt-get -y install "$PKG_DIR"/stunnel*.deb
+        
+        # Use array to properly handle glob expansion
+        local stunnel_packages=("${PKG_DIR}"/stunnel*.deb)
+        if [ -e "${stunnel_packages[0]}" ]; then
+            sudo apt-get -y install "${stunnel_packages[@]}"
         else
             sudo apt-get install -y stunnel4
         fi
@@ -186,11 +189,14 @@ install_stunnel_rhel_centos_rocky() {
         fi
     else
         PKG_DIR="${PACKAGES_BASE}/${ID}/${VERSION_ID}"
-        if ls "$PKG_DIR"/stunnel*.rpm >/dev/null 2>&1; then
+        
+        # Use array to properly handle glob expansion
+        local stunnel_packages=("${PKG_DIR}"/stunnel*.rpm)
+        if [ -e "${stunnel_packages[0]}" ]; then
             if command -v dnf >/dev/null; then
-                sudo dnf -y install --disablerepo='*'  --setopt=install_weak_deps=False "$PKG_DIR"/stunnel*.rpm
+                sudo dnf -y install --disablerepo='*' --setopt=install_weak_deps=False "${stunnel_packages[@]}"
             else
-                sudo yum -y install --disablerepo='*' --nogpgcheck "$PKG_DIR"/stunnel*.rpm
+                sudo yum -y install --disablerepo='*' --nogpgcheck "${stunnel_packages[@]}"
             fi
         else
             if command -v dnf >/dev/null; then
